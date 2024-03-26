@@ -1,0 +1,16 @@
+aws_profile: <AWS_PROFILE>
+# Check Rekognition regions: https://docs.aws.amazon.com/general/latest/gr/rekognition.html
+aws_region: eu-central-1
+watermeter_image_path: img/watermeter_last.jpg
+postgaugerois:
+- [1700, 1235, 413, 408]
+postrois:
+- [1513, 863, 85, 152]
+- [1634, 859, 93, 159]
+- [1759, 862, 103, 195]
+pregaugerois: []
+prerois:
+- [1016, 870, 84, 145]
+- [1139, 872, 86, 136]
+- [1267, 872, 87, 138]
+- [1390, 870, 90, 143]
