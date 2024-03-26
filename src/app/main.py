@@ -14,13 +14,9 @@ def detect_text(watermeter_image_path, session, rois):
     for roi in rois:
         left, top , width, height = roi
         width_pos = Decimal(width) / Decimal(image_width)
-        print(f"width_pos: ", width_pos)
         height_pos = Decimal(height) / Decimal(image_height)
-        print(f"height_pos: ", height_pos)
         left_pos = Decimal(left) / Decimal(image_width)
-        print(f"left_pos: ", left_pos)
         top_pos = Decimal(top) / Decimal(image_height)
-        print(f"top_pos: ", top_pos)
         region = {
             'BoundingBox': {
                 'Width': float(width_pos),
