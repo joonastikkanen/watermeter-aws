@@ -6,17 +6,17 @@ from decimal import Decimal, getcontext
 
 def detect_text(watermeter_image_path, session, rois):
     # Set the precision
-    getcontext().prec = 17
+    getcontext().prec = 25
     regions_of_interest = []
     with Image.open(watermeter_image_path) as img:
         # Get the width and height
         image_width, image_height = img.size
     for roi in rois:
-        left, top , width, height = roi
-        width_pos = Decimal(width) / Decimal(image_width)
-        height_pos = Decimal(height) / Decimal(image_height)
-        left_pos = Decimal(left) / Decimal(image_width)
-        top_pos = Decimal(top) / Decimal(image_height)
+        top, left, width, height = roi
+        width_pos = Decimal(width)/Decimal(image_width)
+        height_pos = Decimal(height)/Decimal(image_height)
+        left_pos = Decimal(left)/Decimal(image_height)
+        top_pos = Decimal(top)/Decimal(image_width)
         region = {
             'BoundingBox': {
                 'Width': float(width_pos),
@@ -43,8 +43,8 @@ def detect_text(watermeter_image_path, session, rois):
     )
 
     text_detections = response['TextDetections']
-    # Filter out the detections that are not digits
-    digit_detections = [d['DetectedText'] for d in text_detections if d['DetectedText'].isdigit()]
+    # Filter out the detections that are not digits and confidence is more than 90
+    digit_detections = [d['DetectedText'] for d in text_detections if d['DetectedText'].isdigit() and d['Confidence'] > 90]
 
     return digit_detections
 
