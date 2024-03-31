@@ -63,13 +63,7 @@ def main():
 
     config = load_config()
     prerois = config["prerois"] = [tuple(roi) for roi in config["prerois"]]
-    pregaugerois = config["pregaugerois"] = [
-        tuple(roi) for roi in config["pregaugerois"]
-    ]
     postrois = config["postrois"] = [tuple(roi) for roi in config["postrois"]]
-    postgaugerois = config["postgaugerois"] = [
-        tuple(roi) for roi in config["postgaugerois"]
-    ]
     aws_profile = config["aws_profile"]
     aws_region = config["aws_region"]
     watermeter_image_path = config["watermeter_image_path"]
