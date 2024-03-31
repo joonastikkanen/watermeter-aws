@@ -69,18 +69,14 @@ def main():
     # Create a session using your AWS credentials from environment variables
     session = boto3.Session(profile_name=aws_profile, region_name=aws_region)
     watermeter_image_path = watermeter_image_path
-    
+
     preroisdigits = str(detect_text(watermeter_image_path, session, prerois))
-    pregaugeroisdigits = str(detect_text(watermeter_image_path, session, pregaugerois))
-    pre_digits = preroisdigits + pregaugeroisdigits
-    print(f"pre_digits: ", pre_digits)
+    print(f"pre_digits: ", preroisdigits)
 
     postroisdigits = str(detect_text(watermeter_image_path, session, postrois))
-    postgaugeroisdigits = str(detect_text(watermeter_image_path, session, postgaugerois))
-    post_digits = postroisdigits + postgaugeroisdigits
-    print(f"postroi_digits: ", post_digits)
+    print(f"postroi_digits: ", postroisdigits)
 
-    total_digits = pre_digits + "." + post_digits
+    total_digits = preroisdigits + "." + postroisdigits
     print(f"total_digits: ", total_digits)
 
 if __name__ == "__main__":
