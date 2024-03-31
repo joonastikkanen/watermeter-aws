@@ -6,5 +6,6 @@ pkgs.mkShellNoCC {
     python311Packages.boto3
     python311Packages.pyyaml
     python311Packages.pillow
+    python311Packages.black
   ];
 }
