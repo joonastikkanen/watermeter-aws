@@ -1,8 +1,10 @@
-import boto3
 import base64
-import yaml
-from PIL import Image
 from decimal import Decimal, getcontext
+
+import yaml
+import boto3
+from PIL import Image
+
 
 def detect_text(watermeter_image_path, session, rois):
     # Set the precision
