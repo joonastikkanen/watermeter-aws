@@ -51,7 +51,12 @@ def detect_text(watermeter_image_path, session, rois):
         if d["DetectedText"].isdigit() and d["Confidence"] > 0 and d["Type"] == "WORD"
     ]
 
-    return digit_detections
+    digits = ""
+
+    for digit in digit_detections:
+        digits += str(digit)
+
+    return digits
 
 
 def main():
