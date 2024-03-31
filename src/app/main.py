@@ -47,9 +47,10 @@ def detect_text(watermeter_image_path, session, rois):
 
     text_detections = response['TextDetections']
     # Filter out the detections that are not digits and confidence is more than 90
-    digit_detections = [d['DetectedText'] for d in text_detections if d['DetectedText'].isdigit() and d['Confidence'] > 90]
+    digit_detections = [d['DetectedText'] for d in text_detections if d['DetectedText'].isdigit() and d['Confidence'] > 0 and d["Type"] == "WORD"]
 
     return digit_detections
+
 
 def main():
     # LOAD CONFIG FILE
