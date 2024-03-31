@@ -12,11 +12,12 @@ def detect_text(watermeter_image_path, session, rois):
         # Get the width and height
         image_width, image_height = img.size
     for roi in rois:
-        top, left, width, height = roi
+        # x, y, w, h
+        topleft_col, topleft_row, width, height = roi
         width_pos = Decimal(width)/Decimal(image_width)
         height_pos = Decimal(height)/Decimal(image_height)
-        left_pos = Decimal(left)/Decimal(image_height)
-        top_pos = Decimal(top)/Decimal(image_width)
+        left_pos = Decimal(topleft_col)/Decimal(image_width)
+        top_pos = Decimal(topleft_row)/Decimal(image_height)
         region = {
             'BoundingBox': {
                 'Width': float(width_pos),
